@@ -11,10 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci && npm run build
+      - name: Build
+        run: npm run build
+        env:
+          VITE_APIKEY: ${{ secrets.VITE_APIKEY }}
+          VITE_AUTHDOMAIN: ${{secrets.VITE_AUTHDOMAIN}}
+          VITE_PROJECTID: ${{secrets.VITE_PROJECTID}}
+          VITE_STORAGEBUCKET: ${{secrets.VITE_STORAGEBUCKET}}
+          VITE_MESSAGINGSENDERID: ${{secrets.VITE_MESSAGINGSENDERID}}
+          VITE_APPID: ${{secrets.VITE_APPID}}
+          VITE_MEASUREMENTID: ${{secrets.VITE_MEASUREMENTID}}
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CLOUD_COOKBOOK_24FD4 }}
           channelId: live
-          projectId: cloud-cookbook-24fd4
+          projectId: ${{secrets.VITE_PROJECTID}}
