@@ -19,11 +19,13 @@ const Home: React.FC = () => {
 	}, [emailVerified]);
 
 	return (
-		<div className="flex flex-col gap-8">
+		<>
 			<AppToaster />
-			<Link to="/sign-in">sign in</Link>
-			<Link to="register">Register</Link>
-			<Link to="recover-password">Recover password</Link>
+			<div className="flex flex-row gap-8">
+				<Link to="/sign-in">sign in</Link>
+				<Link to="register">Register</Link>
+				<Link to="recover-password">Recover password</Link>
+			</div>
 			<Modal
 				ref={modalRef}
 				isOpen={showModal}
@@ -44,7 +46,7 @@ const Home: React.FC = () => {
 					/>
 				</div>
 			</Modal>
-		</div>
+		</>
 	);
 };
 
