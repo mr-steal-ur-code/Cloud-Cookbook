@@ -58,7 +58,7 @@ const SignIn: React.FC = () => {
 						onChange={(e) => setPassword(e.target.value)}
 					/>
 					{error && <ErrorMessage error={error} />}
-					<Button className="w-full" text="Sign In" />
+					<Button submit className="w-full" text="Sign In" />
 				</form>
 			</div>
 		</>
