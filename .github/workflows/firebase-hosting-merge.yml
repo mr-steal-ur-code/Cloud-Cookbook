@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build
-        run: vite build
+        run: npm ci && npm run build
         env:
           VITE_APIKEY: ${{ secrets.VITE_APIKEY }}
           VITE_AUTHDOMAIN: ${{secrets.VITE_AUTHDOMAIN}}
