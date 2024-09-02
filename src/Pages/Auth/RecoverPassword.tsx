@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+import ErrorMessage from "../../components/ErrorMessage";
+import { IoArrowBack } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const RecoverPassword: React.FC = () => {
 	document.title = "Recover Password";
@@ -22,21 +25,27 @@ const RecoverPassword: React.FC = () => {
 	};
 
 	return (
-		<div className="fade-in flex flex-col gap-4 m-2 fade-in">
-			<p className="font-bold p-2">
-				Forgot your password? Enter the email address associated with your
-				account and we'll send you instructions to reset it.
-			</p>
-			{message && <p className="text-danger">{message}</p>}
-			<div className="flex flex-row items-center gap-8">
-				<Input
-					type="email"
-					name="email"
-					labelText="email"
-					labelType="floating"
-					onChange={(e) => setEmail(e.target?.value)}
-				/>
-				<Button text="send" type="outline" onClick={handlePasswordReset} />
+		<div className="px-2">
+			<Link className="text-sm align-middle hover:text-primary" to="/sign-in">
+				<IoArrowBack className="inline-block" /> Back to sign in
+			</Link>
+			<div className="fade-in flex flex-col items-center gap-4 pt-12">
+				<h4>Forgot your password?</h4>
+				<p className="font-bold p-2">
+					Enter the email address associated with your account and we'll send
+					you instructions to reset it.
+				</p>
+				{message && <ErrorMessage className="pb-4" error={message} />}
+				<div className="flex flex-row items-start gap-8">
+					<Input
+						type="email"
+						name="email"
+						labelText="email"
+						labelType="floating"
+						onChange={(e) => setEmail(e.target?.value)}
+					/>
+					<Button text="send" type="outline" onClick={handlePasswordReset} />
+				</div>
 			</div>
 		</div>
 	);

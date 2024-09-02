@@ -55,7 +55,7 @@ const SignIn: React.FC = () => {
 					/>
 				</form>
 				<div className="flex flex-col gap-5 items-center pt-16">
-					<p>or sign up using</p>
+					<p>or </p>
 					<Link
 						className="text-content hover:opacity-75 text-lg"
 						to="/register"

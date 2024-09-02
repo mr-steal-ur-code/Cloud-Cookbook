@@ -63,7 +63,7 @@ const Register: React.FC = () => {
 					/>
 				</div>
 			) : (
-				<div>
+				<div className="px-2">
 					<p className="pb-12 text-xl text-primary2">
 						Please use a valid email when registering
 					</p>
@@ -91,17 +91,14 @@ const Register: React.FC = () => {
 						<Button
 							submit
 							loading={loading}
-							disabled={loading}
+							disabled={loading || !email.length || !password.length}
 							className="w-full mt-2"
 							text="Create account"
 						/>
 					</form>
 					<div className="text-center">
-						<span className="p-4 block"> --or-- </span>
-						<Link
-							className="w-full hover:opacity-70 bg-gradient-to-b from-primaryGradient-0 to-primaryGradient-1 flex justify-center p-1 rounded-md"
-							to="/sign-in"
-						>
+						<span className="p-4 block"> Already have an account? </span>
+						<Link className="hover:opacity-70 text-center" to="/sign-in">
 							Sign In
 						</Link>
 					</div>

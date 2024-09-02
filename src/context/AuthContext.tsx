@@ -44,12 +44,15 @@ export const AuthContextProvider = ({ children }: { children: any }) => {
 		try {
 			await sendEmailVerification(user);
 			return { success: true, response: "Verification Email Sent" };
-		} catch (error) {
+		} catch (error: any) {
 			console.error("Error sending verification email:", error);
+			const response =
+				error.code === 400
+					? "Too many attempts, try again soon"
+					: "Error sending verification email, try again soon";
 			return {
 				success: false,
-				response:
-					"Error sending verification email, try again in a few minutes",
+				response,
 			};
 		}
 	};

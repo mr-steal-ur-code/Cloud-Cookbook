@@ -31,6 +31,7 @@ body {
     --color-content: 75 75 75;
     --color-secondary: 240 185 90;
     --color-hover-bkg: 0, 0, 0, .2;
+    --color-danger: 200 0 50;
   }
 
   @media (prefers-color-scheme:dark) {
@@ -40,6 +41,7 @@ body {
       --color-content: 240 240 240;
       --color-secondary: 240 170 70;
       --color-hover-bkg: 255, 255, 255, .2;
+      --color-danger: 150 40 60;
     }
   }
 
@@ -49,6 +51,7 @@ body {
     --color-content: 75 75 75;
     --color-secondary: 240 185 90;
     --color-hover-bkg: 0, 0, 0, .2;
+    --color-danger: 200 0 50;
   }
 
   [data-theme="dark"] {
@@ -57,6 +60,7 @@ body {
     --color-content: 240 240 240;
     --color-secondary: 240 170 70;
     --color-hover-bkg: 255, 255, 255, .2;
+    --color-danger: 150 40 60;
   }
 }
 

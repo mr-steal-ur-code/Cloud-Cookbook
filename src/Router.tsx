@@ -15,7 +15,7 @@ const Router: React.FC = () => {
 		<BrowserRouter>
 			<Header />
 			<div
-				className={`mt-20 sm:max-w-[100vw] md:max-w-[650px] lg:max-w-[900px] xl:max-w-[1200px] mx-auto mb-20 py-7 flex flex-col min-h-[82vh]`}
+				className={`mt-16 sm:max-w-[100vw] md:max-w-[650px] lg:max-w-[900px] xl:max-w-[1200px] mx-auto mb-20 py-7 flex flex-col min-h-[82vh]`}
 			>
 				<Routes>
 					<Route path="/" element={<Home />} />

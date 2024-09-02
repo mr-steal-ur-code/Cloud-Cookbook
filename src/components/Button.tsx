@@ -45,11 +45,15 @@ const Button: React.FC<ButtonProps> = ({
 			: textSize === "lg"
 			? "text-xl"
 			: "text-md"
-	} ${disabled ? "opacity-20" : "hover:opacity-70"}  ${
-		color ? color : "text-content"
 	} ${
-		type && type !== "text" && "hover:bg-hoverBkg active:bg-transparent "
-	} p-2 min-w-28 rounded-md transition-all duration-300 active:text-transparent`;
+		disabled
+			? "opacity-40"
+			: type && type !== "text"
+			? "hover:bg-hoverBkg active:bg-transparent hover:opacity-70 active:opacity-20"
+			: "hover:opacity-70 active:opacity-20"
+	}  ${
+		color ? color : "text-content"
+	} p-2 min-w-28 rounded-md transition-all duration-300`;
 
 	switch (type) {
 		case "cancel":
@@ -65,7 +69,7 @@ const Button: React.FC<ButtonProps> = ({
 			buttonClass = commonClasses;
 			break;
 		default:
-			buttonClass = `bg-primary active:bg-transparent ${commonClasses} `;
+			buttonClass = `bg-primary ${commonClasses} `;
 			break;
 	}
 

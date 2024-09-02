@@ -20,7 +20,7 @@ export default {
 				tertiary: "rgb(0, 120, 120)",
 				glass: "rgba(0,0,0,.1)",
 				success: "rgb(75, 160, 50)",
-				danger: "rgb(200, 0, 50)",
+				danger: "rgb(var(--color-danger))",
 				warning: "rgb(240, 210, 20)",
 			},
 		},
