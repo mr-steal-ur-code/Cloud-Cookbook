@@ -39,7 +39,7 @@ export const AuthContextProvider = ({ children }: { children: any }) => {
 	const sendVerificationEmail = async () => {
 		const user = auth?.currentUser || null;
 		if (!user) {
-			return { success: false, response: "No User" };
+			return { success: false, response: "No User Found" };
 		}
 		try {
 			await sendEmailVerification(user);

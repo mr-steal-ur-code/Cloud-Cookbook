@@ -68,10 +68,7 @@ const Modal = forwardRef<ModalHandle, ModalProps>(
 					{closeButton && (
 						<button
 							className="absolute right-0 bottom-0 p-2 hover:text-primary"
-							onClick={() => {
-								setAnimateClass("modal-exit modal-exit-active");
-								setTimeout(() => onClose(), 300);
-							}}
+							onClick={dismiss}
 						>
 							Dismiss
 						</button>

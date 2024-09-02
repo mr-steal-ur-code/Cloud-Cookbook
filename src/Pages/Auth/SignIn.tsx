@@ -22,24 +22,8 @@ const SignIn: React.FC = () => {
 
 	return (
 		<>
-			<div className="fade-in mb-4 flex text-center justify-around">
-				<Link className="text-content hover:opacity-75 text-lg" to="/register">
-					Not signed up?{" "}
-					<span className="text-primary underline underline-offset-4">
-						Register Here
-					</span>
-				</Link>
-				<Link
-					className="text-content hover:opacity-75 text-lg"
-					to="/recover-password"
-				>
-					Forgot Password?{" "}
-					<span className="text-primary underline underline-offset-4">
-						Recover Here
-					</span>
-				</Link>
-			</div>
-			<div className="fade-in pt-4">
+			<div className="fade-in px-2">
+				<h2 className="text-center pb-4 font-bold">Sign In</h2>
 				<form onSubmit={(e) => handleSignIn(e)}>
 					<Input
 						required
@@ -58,8 +42,27 @@ const SignIn: React.FC = () => {
 						onChange={(e) => setPassword(e.target.value)}
 					/>
 					{error && <ErrorMessage error={error} />}
-					<Button submit className="w-full" text="Sign In" />
+					<Link
+						className="text-content hover:opacity-75 flex mb-6 float-right"
+						to="/recover-password"
+					>
+						Forgot Password?
+					</Link>
+					<Button
+						submit
+						className="w-full font-bold text-lg bg-gradient-to-r from-primaryGradient-0 to-primaryGradient-1"
+						text="Sign In"
+					/>
 				</form>
+				<div className="flex flex-col gap-5 items-center pt-16">
+					<p>or sign up using</p>
+					<Link
+						className="text-content hover:opacity-75 text-lg"
+						to="/register"
+					>
+						<span className="font-bold">SIGN UP</span>
+					</Link>
+				</div>
 			</div>
 		</>
 	);

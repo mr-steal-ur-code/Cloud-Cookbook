@@ -4,7 +4,7 @@ export default {
 	theme: {
 		extend: {
 			gradientColorStops: {
-				primaryGradient: ["rgb(225, 160, 0)", "rgb(230, 140, 33)"],
+				primaryGradient: ["rgb(var(--color-secondary))", "rgb(225, 145, 70)"],
 			},
 			colors: {
 				accent: {
@@ -14,11 +14,11 @@ export default {
 				bkg: "rgb(var(--color-bkg))",
 				bkg2: "rgb(var(--color-bkg2))",
 				hoverBkg: "rgba(var(--color-hover-bkg))",
-				primary: "rgb(230, 140, 33)",
+				primary: "rgb(225, 145, 70)",
 				content: "rgb(var(--color-content))",
 				secondary: "rgb(var(--color-secondary))",
 				tertiary: "rgb(0, 120, 120)",
-				glass: "rgba(0,0,0,.05)",
+				glass: "rgba(0,0,0,.1)",
 				success: "rgb(75, 160, 50)",
 				danger: "rgb(200, 0, 50)",
 				warning: "rgb(240, 210, 20)",

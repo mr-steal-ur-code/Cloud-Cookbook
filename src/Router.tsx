@@ -9,7 +9,6 @@ import { useAuth } from "./context/AuthContext";
 import Header from "./components/Header";
 
 const Router: React.FC = () => {
-	//const { user } = bookStore();
 	const { isLoggedIn } = useAuth();
 
 	return (

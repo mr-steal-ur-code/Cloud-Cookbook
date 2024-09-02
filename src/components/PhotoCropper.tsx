@@ -83,7 +83,7 @@ const PhotoCropper: React.FC<CropperProps> = ({ user, onClose }) => {
 	}, [image]);
 
 	return (
-		<div className="flex flex-row gap-4 items-center justify-center pb-4">
+		<div className="flex flex-row gap-4 items-center justify-center">
 			<img
 				onClick={() => inputEl?.current?.click()}
 				className="rounded-xl cursor-pointer hover:shadow-content hover:shadow-lg transition-all duration-500"

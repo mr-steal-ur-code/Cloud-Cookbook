@@ -13,7 +13,6 @@ type ButtonProps = {
 		| "text-danger"
 		| "text-warning"
 		| "text-primary"
-		| "text-primary2"
 		| "text-secondary"
 		| "text-tertiary";
 	animation?:
@@ -50,7 +49,7 @@ const Button: React.FC<ButtonProps> = ({
 		color ? color : "text-content"
 	} ${
 		type && type !== "text" && "hover:bg-hoverBkg active:bg-transparent "
-	} p-2 mx-auto min-w-28 rounded-md transition-all duration-300 active:text-transparent`;
+	} p-2 min-w-28 rounded-md transition-all duration-300 active:text-transparent`;
 
 	switch (type) {
 		case "cancel":
@@ -79,7 +78,7 @@ const Button: React.FC<ButtonProps> = ({
 				className={buttonClass}
 				onClick={() => !disabled && !loading && onClick && onClick()}
 			>
-				<div className="flex justify-center gap-2 mx-auto font-medium text-md">
+				<div className="flex justify-center gap-2 mx-auto">
 					{loading && (
 						<img
 							className={`${animation || "animate-spin"}`}

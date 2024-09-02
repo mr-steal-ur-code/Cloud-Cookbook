@@ -65,7 +65,7 @@ const Input: React.FC<InputProps> = ({
 				{labelType === "floating" && (
 					<label
 						htmlFor={name}
-						className="opacity:100 absolute text-xl text-content duration-500 transform -translate-y-6 scale-75 top-0 z-50 origin-[0] peer-focus:start-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:opacity-50 peer-placeholder-shown:translate-y-0 peer-focus:opacity-100 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+						className="opacity:100 absolute text-xl text-content duration-500 transform -translate-y-6 scale-75 top-0 z-50 origin-[0] peer-focus:start-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:opacity-60 peer-placeholder-shown:translate-y-0 peer-focus:opacity-100 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
 					>
 						{labelText}
 					</label>
