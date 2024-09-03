@@ -9,10 +9,12 @@ import { MdLibraryAdd } from "react-icons/md";
 import { TbLibraryMinus } from "react-icons/tb";
 import BookCarousel from "../components/Book Carousel/BookCarousel";
 import Loader from "../components/Loader";
+import { useAuth } from "../context/AuthContext";
 
 const Modal = lazy(() => import("../components/Modal"));
 const Home: React.FC = () => {
 	const { user } = bookStore();
+	const { isLoggedIn } = useAuth();
 	const [books, setBooks] = useState<any[] | undefined>(undefined);
 	const [showAddModal, setShowAddModal] = useState(false);
 	const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -67,13 +69,13 @@ const Home: React.FC = () => {
 
 	return (
 		<>
-			{books && books?.length > 0 ? (
+			{isLoggedIn && books && books?.length > 0 ? (
 				<BookCarousel objArray={books} />
-			) : books === undefined ? (
+			) : isLoggedIn && books === undefined ? (
 				<Loader size="lg" />
-			) : (
+			) : isLoggedIn ? (
 				<p className="text-center">Add a cook book to get started!</p>
-			)}
+			) : null}
 			<div className="p-2">
 				<div
 					className="flex p-6 float-left cursor-pointer hover:text-xl"
