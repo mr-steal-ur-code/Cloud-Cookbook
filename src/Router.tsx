@@ -7,6 +7,7 @@ import NotFound from "./Pages/Not Found/NotFound";
 import SignIn from "./Pages/Auth/SignIn";
 import { useAuth } from "./context/AuthContext";
 import Header from "./components/Header";
+import AppToaster from "./components/Toast/AppToaster";
 
 const Router: React.FC = () => {
 	const { isLoggedIn } = useAuth();
@@ -17,6 +18,7 @@ const Router: React.FC = () => {
 			<div
 				className={`mt-16 sm:max-w-[100vw] md:max-w-[650px] lg:max-w-[900px] xl:max-w-[1200px] mx-auto mb-20 py-7 flex flex-col min-h-[82vh]`}
 			>
+				<AppToaster />
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/register" element={<Register />} />

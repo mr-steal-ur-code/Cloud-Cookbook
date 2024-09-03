@@ -8,13 +8,25 @@ import { storage } from "../firebase";
 import Button from "./Button";
 
 type CropperProps = {
-	user: any;
+	user?: any;
 	onClose?: () => void;
-};
-const PhotoCropper: React.FC<CropperProps> = ({ user, onClose }) => {
+	avatar?: boolean;
+	storageName?: string;
+} & ( // Conditional type
+	| { avatar: true; onDownloadUrl?: null }
+	| { avatar?: false; onDownloadUrl: (url: string) => void }
+);
+const PhotoCropper: React.FC<CropperProps> = ({
+	user,
+	onClose,
+	avatar,
+	storageName,
+	onDownloadUrl,
+}) => {
 	const { saveUser } = cookStore();
 	const [image, setImage] = useState<any>(null);
 	const [loading, setLoading] = useState(false);
+	const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 	const cropperRef = useRef<any>(null);
 	const inputEl = useRef<HTMLInputElement>(null);
 
@@ -53,14 +65,32 @@ const PhotoCropper: React.FC<CropperProps> = ({ user, onClose }) => {
 			try {
 				setLoading(true);
 				const resizedDataUrl = resizedCanvas.toDataURL();
-				const storageRef = ref(storage, `avatar/${user?.id}/avatar`);
+				setPreviewUrl(resizedDataUrl);
+				const directory = avatar
+					? `avatar/${user?.id}/avatar`
+					: `${storageName || "not named"}/${user?.id}/${new Date().toJSON()}`;
+				console.log(storage);
+
+				const storageRef = ref(storage, directory);
+				console.log("ref:", storageRef);
+
 				await uploadString(storageRef, resizedDataUrl, "data_url");
 				const downloadURL = await getDownloadURL(storageRef);
-				await saveUser(user?.id, { avatar: downloadURL });
-				handleClose();
-				setTimeout(() => {
-					toast.success("Avatar Saved");
-				}, 400);
+				if (avatar) {
+					const res = await saveUser(user?.id, { avatar: downloadURL });
+					if (res.success) {
+						handleClose();
+						setTimeout(() => {
+							toast.success("Avatar Saved");
+						}, 400);
+					} else {
+						handleClose();
+						setTimeout(() => {
+							toast.error("Error Saving Avatar");
+						}, 400);
+					}
+				}
+				onDownloadUrl && onDownloadUrl(downloadURL);
 			} catch (error: any) {
 				setLoading(false);
 				console.log("Error saving cropped Image:", error);
@@ -89,7 +119,7 @@ const PhotoCropper: React.FC<CropperProps> = ({ user, onClose }) => {
 				className="rounded-xl cursor-pointer hover:shadow-content hover:shadow-lg transition-all duration-500"
 				height="80px"
 				width="80px"
-				src={user?.avatar || "/assets/svg/no-image.svg"}
+				src={user ? user?.avatar || "/assets/svg/no-image.svg" : previewUrl}
 			/>
 			<div className="text-center">
 				<input
@@ -102,7 +132,7 @@ const PhotoCropper: React.FC<CropperProps> = ({ user, onClose }) => {
 					onClick={() => inputEl?.current?.click()}
 					className="p-2 border-b-transparent hover:border-b font-semibold hover:text-primary hover:border-primary transition-all duration-500"
 				>
-					Update Avatar
+					{user ? "Update Avatar" : "Select Image"}
 				</button>
 				{image && (
 					<div className="absolute left-0 -top-1 z-50 w-full  flex flex-col items-center">

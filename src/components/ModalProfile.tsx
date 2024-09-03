@@ -39,6 +39,7 @@ const ModalProfile: React.FC<ModalProfileProps> = ({
 								{formatTimestamp(user?.createdAt, "shortDate")}
 							</p>
 							<PhotoCropper
+								avatar
 								user={user}
 								onClose={() => modalRef?.current?.dismiss()}
 							/>
