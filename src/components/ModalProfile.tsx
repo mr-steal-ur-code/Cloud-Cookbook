@@ -30,6 +30,7 @@ const ModalProfile: React.FC<ModalProfileProps> = ({
 								onClick={() => {
 									if (!confirm("Sign out?")) return;
 									signout();
+									modalRef.current?.dismiss();
 								}}
 							>
 								Sign Out

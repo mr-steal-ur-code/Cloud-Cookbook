@@ -69,27 +69,35 @@ const Home: React.FC = () => {
 
 	return (
 		<>
-			{isLoggedIn && books && books?.length > 0 ? (
-				<BookCarousel objArray={books} />
-			) : isLoggedIn && books === undefined ? (
-				<Loader size="lg" />
-			) : isLoggedIn ? (
-				<p className="text-center">Add a cook book to get started!</p>
-			) : null}
-			<div className="p-2">
-				<div
-					className="flex p-6 float-left cursor-pointer hover:text-xl"
-					onClick={() => !clickDisabled && setShowDeleteModal(!showDeleteModal)}
-				>
-					<TbLibraryMinus className="text-content" size={36} />
+			{isLoggedIn ? (
+				<div>
+					{books && books?.length > 0 ? (
+						<BookCarousel objArray={books} />
+					) : books === undefined ? (
+						<Loader size="lg" />
+					) : (
+						<p className="text-center">Add a cook book to get started!</p>
+					)}
+					<div className="p-2">
+						<div
+							className="flex p-6 float-left cursor-pointer hover:text-xl"
+							onClick={() =>
+								!clickDisabled && setShowDeleteModal(!showDeleteModal)
+							}
+						>
+							<TbLibraryMinus className="text-content" size={36} />
+						</div>
+					</div>
+					<div
+						className="flex p-6 float-right cursor-pointer hover:text-xl"
+						onClick={() => !clickDisabled && setShowAddModal(!showAddModal)}
+					>
+						<MdLibraryAdd className="text-content" size={36} />
+					</div>
 				</div>
-				<div
-					className="flex p-6 float-right cursor-pointer hover:text-xl"
-					onClick={() => !clickDisabled && setShowAddModal(!showAddModal)}
-				>
-					<MdLibraryAdd className="text-content" size={36} />
-				</div>
-			</div>
+			) : (
+				<p className="text-center">Sign in to your account to get going!</p>
+			)}
 			<SuspenseLoader>
 				<Modal closeButton isOpen={showAddModal} onClose={handleDebounceClose}>
 					<form
