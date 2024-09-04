@@ -70,7 +70,7 @@ const Home: React.FC = () => {
 	return (
 		<>
 			{isLoggedIn ? (
-				<div>
+				<div className="mt-12">
 					{books && books?.length > 0 ? (
 						<BookCarousel objArray={books} />
 					) : books === undefined ? (

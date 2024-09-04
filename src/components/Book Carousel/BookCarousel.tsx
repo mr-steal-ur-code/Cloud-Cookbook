@@ -24,7 +24,7 @@ const Carousel: React.FC<CarouselProps> = ({ objArray }) => {
 	};
 
 	return (
-		<div className="">
+		<div>
 			<Slider {...settings}>
 				{objArray?.map?.((obj: CookBook) => (
 					<div

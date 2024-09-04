@@ -36,7 +36,7 @@ const Header = () => {
 		<div
 			className={`${
 				isLoggedIn && !emailVerified ? "h-20" : "h-16"
-			} fixed top-0 w-full flex flex-col text-white bg-bkg2 z-50 px-2`}
+			} fixed top-0 w-full flex flex-col text-white bg-bkg2 z-50 px-2 sm:pr-8 md:pr-0`}
 		>
 			<div className={`flex flex-row items-center justify-between px-4 flex-1`}>
 				<ThemeSwitch />
