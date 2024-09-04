@@ -61,14 +61,14 @@ const Modal = forwardRef<ModalHandle, ModalProps>(
 			>
 				<div
 					ref={modalRef}
-					className={`overflow-y-scroll max-h-[60vh] relative p-2 bg-bkg2 border-2 border-white rounded-md
+					className={`overflow-y-auto max-h-[60vh] relative p-2 bg-bkg2 border-2 border-white rounded-md
           sm:w-[85vw] md:w-[450px] lg:w-[600px] ${animateClass}`}
 				>
-					<div className="relative">
+					<div className="relative pb-12">
 						{children}
 						{closeButton && (
 							<button
-								className="absolute bottom-0 right-0 p-2 hover:text-primary"
+								className="absolute bottom-0 right-0 hover:text-primary"
 								onClick={dismiss}
 							>
 								Dismiss

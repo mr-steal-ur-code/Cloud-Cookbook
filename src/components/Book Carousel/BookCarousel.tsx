@@ -10,6 +10,7 @@ type CarouselProps = {
 
 const Carousel: React.FC<CarouselProps> = ({ objArray }) => {
 	const matches = useMediaQuery("(max-width:28rem)");
+	const showArrows = useMediaQuery("(min-width:48rem)");
 	const settings: Settings = {
 		dots: true,
 		infinite: true,
@@ -17,7 +18,7 @@ const Carousel: React.FC<CarouselProps> = ({ objArray }) => {
 		slidesToShow: matches ? 1 : 2,
 		slidesToScroll: 1,
 		adaptiveHeight: true,
-		arrows: !matches && objArray?.length >= 2,
+		arrows: showArrows && objArray?.length >= 2,
 	};
 
 	const handleBookClick = (id: string) => {

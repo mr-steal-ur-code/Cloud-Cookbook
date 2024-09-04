@@ -136,7 +136,7 @@ const Home: React.FC = () => {
 					<div className="flex flex-col gap-4 pt-4 pb-12">
 						{books?.map((book: CookBook) => (
 							<p
-								className="overflow-y-scroll text-lg text-danger"
+								className="text-lg text-danger"
 								key={book?.id}
 								onClick={() => handleDelete(book.id!)}
 							>
